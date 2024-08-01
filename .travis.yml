@@ -14,3 +14,9 @@ after_success:
   - docker build -t pear25/multi-server ./server
   - docker build -t pear25/multi-worker ./worker
   - docker build -t pear25/multi-nginx ./nginx
+  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+  - docker push pear25/multi-client
+  - docker push pear25/multi-server
+  - docker push pear25/multi-worker
+  - docker push pear25/multi-nginx
+
